@@ -23,16 +23,26 @@ namespace UmbracoHomework
                 if(action != null)
                 {
                     object instance = Activator.CreateInstance(controller);
-                    object response = action.Invoke(instance, new object[] { value });
-                    if(response is JsonResult)
-                        {
-                        object jsonData = ((JsonResult)response).Data; 
-                        if(jsonData is Boolean)
-                        {
-                            return (bool)jsonData ? ValidationResult.Success : new ValidationResult(this.ErrorMessage);
-                        }
 
+                    try
+                    {
+                        object response = action.Invoke(instance, new object[] { value });
+                        if (response is JsonResult)
+                        {
+                            object jsonData = ((JsonResult)response).Data;
+                            if (jsonData is Boolean)
+                            {
+                                return (bool)jsonData ? ValidationResult.Success : new ValidationResult(this.ErrorMessage);
+                            }
+
+                        }
                     }
+                    catch (Exception)
+                    {
+
+                        return new ValidationResult(this.ErrorMessage); ;
+                    }
+              
                 }
             }
              return ValidationResult.Success;

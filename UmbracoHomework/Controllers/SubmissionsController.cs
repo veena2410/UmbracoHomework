@@ -30,9 +30,14 @@ namespace UmbracoHomework.Controllers
 
         public JsonResult IsSerialnumberAvailable(Guid Serialnumber)
         {
+           
+
 
             using (var db = new AcmeDBEntities())
             {
+
+                //Json(!db.SubmissionSet.Any(name => name.Serialnumber == Serialnumber), JsonRequestBehavior.AllowGet)
+
                 var serial = db.Serialnumber.FirstOrDefault(x => x.Serialnumber1 == Serialnumber);
                 return Json(serial.Counter > 0, JsonRequestBehavior.AllowGet);
             }
@@ -96,6 +101,7 @@ namespace UmbracoHomework.Controllers
             {                
                 try
                 {
+                   
 
                     db.SubmissionSet.Add(submission);
                     var serial = db.Serialnumber.First(x => submission.Serialnumber == x.Serialnumber1);

@@ -20,6 +20,8 @@ namespace UmbracoHomework
           [Required(ErrorMessage = "Required")]
         //  [Remote("IsUserNameAvailable", "Submissions", ErrorMessage = "Name already in use")]
         //  [RemoteClientServer("IsUserNameAvailable", "Submissions", ErrorMessage = "Name already in use")]
+
+
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Required")]
         public string LastName { get; set; }

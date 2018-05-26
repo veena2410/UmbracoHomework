@@ -166,13 +166,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SerialnumbersController.cs" />
     <Compile Include="Controllers\SubmissionsController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Submissions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteClientServerAttribute.cs" />
     <Compile Include="Serialnumber.cs">
@@ -181,7 +179,6 @@
     <Compile Include="Submission.cs">
       <DependentUpon>AcmeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ValidateSerialnumber.cs" />
     <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,7 +222,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Test.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -246,14 +242,10 @@
     <Content Include="Views\Submissions\Edit.cshtml" />
     <Content Include="Views\Submissions\Index.cshtml" />
     <Content Include="Views\Submissions\Draw.cshtml" />
-    <Content Include="Views\Serialnumbers\Create.cshtml" />
-    <Content Include="Views\Serialnumbers\Delete.cshtml" />
-    <Content Include="Views\Serialnumbers\Details.cshtml" />
-    <Content Include="Views\Serialnumbers\Edit.cshtml" />
-    <Content Include="Views\Serialnumbers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Validation\" />
   </ItemGroup>
   <ItemGroup>

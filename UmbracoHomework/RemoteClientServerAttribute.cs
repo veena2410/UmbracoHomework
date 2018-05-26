@@ -20,33 +20,27 @@ namespace UmbracoHomework
             if (controller != null)
             {
                 MethodInfo action = controller.GetMethods().FirstOrDefault(method => method.Name.ToLower() == this.RouteData["action"].ToString().ToLower());
-                if(action != null)
+                if (action != null)
                 {
                     object instance = Activator.CreateInstance(controller);
 
-                    try
+
+                    object response = action.Invoke(instance, new object[] { value });
+                    if (response is JsonResult)
                     {
-                        object response = action.Invoke(instance, new object[] { value });
-                        if (response is JsonResult)
+                        object jsonData = ((JsonResult)response).Data;
+                        if (jsonData is Boolean)
                         {
-                            object jsonData = ((JsonResult)response).Data;
-                            if (jsonData is Boolean)
-                            {
-                                return (bool)jsonData ? ValidationResult.Success : new ValidationResult(this.ErrorMessage);
-                            }
-
+                            return (bool)jsonData ? ValidationResult.Success : new ValidationResult(this.ErrorMessage);
                         }
-                    }
-                    catch (Exception)
-                    {
 
-                        return new ValidationResult(this.ErrorMessage); ;
                     }
-              
+
+
                 }
             }
-             return ValidationResult.Success;
-          //  return new ValidationResult(this.ErrorMessage); 
+            return ValidationResult.Success;
+            //  return new ValidationResult(this.ErrorMessage); 
         }
 
         public RemoteClientServerAttribute(string routeName) : base(routeName)
